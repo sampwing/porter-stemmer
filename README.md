@@ -61,6 +61,21 @@ tbd
   ((complement nil?) (re-find (re-pattern cvc) stem)))
 ```
 
+
+
+
+### Rules follow
+
+#### Step 1a
+
+```
+(defn rule1-builder
+  [pattern replacement]
+  {:func #(re-find pattern %1)
+   :replacement replacement})
+```
+
+
 ** http://clojuredocs.org/clojure.core/re-find
 
 non capturing regex look behind
