@@ -23,8 +23,8 @@ http://tartarus.org/martin/PorterStemmer/def.txt
               (clojure.string/join (take n (repeat (str V C))))
                "(" V ")?")))
                
-(= m0 (m 0)
-(= m1 (m 1)
+(= (str m0) (str (m 0)))
+(= (str m1) (str (m 1)))
 ```
 
 
