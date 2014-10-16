@@ -30,6 +30,36 @@ http://tartarus.org/martin/PorterStemmer/def.txt
 (= (str m1) (str (m 1)))
 ```
 
+## Conditions
+
+### *S
+
+```
+(defn stem-ends-with [stem c]
+  (= (last stem) c))
+```
+
+### *v*
+
+```
+(defn stem-has-vowel [stem]
+  ((complement nil?) (re-find (re-pattern V) stem)))
+```
+
+### *d
+
+```
+tbd
+```
+
+### *o
+
+```
+(def cvc "[^aeiou][aeiou][^aeiouwxy]$")
+
+(defn stem-ends-cvc [stem]
+  ((complement nil?) (re-find (re-pattern cvc) stem)))
+```
 
 ** http://clojuredocs.org/clojure.core/re-find
 
