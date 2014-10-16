@@ -18,10 +18,13 @@ http://tartarus.org/martin/PorterStemmer/def.txt
 
 ; generalize to m_N
 
-(defn m [n] 
-  (re-pattern (str "(" C ")?"
-              (clojure.string/join (take n (repeat (str V C))))
-               "(" V ")?")))
+(defn m-string [n] 
+  (str "(" C ")?"
+       (clojure.string/join (take n (repeat (str V C))))
+       "(" V ")?"))
+
+(defn m [n]
+  (re-pattern (m-string n)))
                
 (= (str m0) (str (m 0)))
 (= (str m1) (str (m 1)))
@@ -32,6 +35,8 @@ http://tartarus.org/martin/PorterStemmer/def.txt
 
 non capturing regex look behind
 
-(re-seq #"((?:o)(y))" "toy")
-> (["oy" "oy" "y"])
+```
+(re-seq #"(?:[^o])y" "toy")
+nil
+```
 
